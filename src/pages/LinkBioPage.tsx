@@ -2,10 +2,12 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "@/components/ProfileSection"
 import { LinkCard } from "@/components/LinkCard"
 import { SocialFooter } from "@/components/SocialFooter"
-import { Send, Phone, Truck, Newspaper, MessageCircle, Mail, LayoutGrid } from "lucide-react"
+import { Send, Newspaper, MessageCircle, Mail, LayoutGrid, Atom, Radio } from "lucide-react"
 
 interface LinkBioPageProps {
   onCatalog: () => void
+  onTechnology: () => void
+  onSignals: () => void
 }
 
 const socials = [
@@ -18,10 +20,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.06, delayChildren: 0.15 },
   },
 }
 
@@ -34,7 +33,7 @@ const itemVariants = {
   },
 }
 
-export function LinkBioPage({ onCatalog }: LinkBioPageProps) {
+export function LinkBioPage({ onCatalog, onTechnology, onSignals }: LinkBioPageProps) {
   const links = [
     {
       title: "Каталог препаратов",
@@ -44,16 +43,18 @@ export function LinkBioPage({ onCatalog }: LinkBioPageProps) {
       onClick: onCatalog,
     },
     {
-      title: "Онлайн-консультация",
-      description: "Ответим на вопросы о препаратах",
+      title: "О технологии",
+      description: "Принцип работы квантовой SSF-технологии",
       href: "#",
-      icon: Phone,
+      icon: Atom,
+      onClick: onTechnology,
     },
     {
-      title: "Доставка лекарств",
-      description: "Быстрая доставка на дом",
+      title: "Выбор сигнала для личного использования",
+      description: "Библиотека 20+ SSF-сигналов",
       href: "#",
-      icon: Truck,
+      icon: Radio,
+      onClick: onSignals,
     },
     {
       title: "Telegram-канал",
@@ -73,52 +74,27 @@ export function LinkBioPage({ onCatalog }: LinkBioPageProps) {
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
       <div className="fixed inset-0 z-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
 
-      <motion.div
-        className="fixed z-0 w-[500px] h-[500px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          top: "-10%",
-          left: "-10%",
-        }}
+      <motion.div className="fixed z-0 w-[500px] h-[500px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(16,185,129,0.22) 0%, transparent 70%)", filter: "blur(60px)", top: "-10%", left: "-10%" }}
         animate={{ x: [0, 100, 50, 0], y: [0, 50, 100, 0], scale: [1, 1.2, 0.9, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="fixed z-0 w-[600px] h-[600px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, transparent 70%)",
-          filter: "blur(80px)",
-          top: "30%",
-          right: "-20%",
-        }}
+      <motion.div className="fixed z-0 w-[600px] h-[600px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(20,184,166,0.18) 0%, transparent 70%)", filter: "blur(80px)", top: "30%", right: "-20%" }}
         animate={{ x: [0, -80, -40, 0], y: [0, 80, -40, 0], scale: [1, 0.85, 1.15, 1] }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="fixed z-0 w-[450px] h-[450px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%)",
-          filter: "blur(70px)",
-          bottom: "-5%",
-          left: "20%",
-        }}
+      <motion.div className="fixed z-0 w-[450px] h-[450px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(56,189,248,0.18) 0%, transparent 70%)", filter: "blur(70px)", bottom: "-5%", left: "20%" }}
         animate={{ x: [0, 60, -30, 0], y: [0, -60, 30, 0], scale: [1, 1.1, 0.95, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="fixed z-0 w-[350px] h-[350px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, transparent 70%)",
-          filter: "blur(50px)",
-          top: "60%",
-          left: "-5%",
-        }}
+      <motion.div className="fixed z-0 w-[350px] h-[350px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(52,211,153,0.15) 0%, transparent 70%)", filter: "blur(50px)", top: "60%", left: "-5%" }}
         animate={{ x: [0, 40, 80, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 1, 1] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="fixed inset-0 z-0 pointer-events-none opacity-60"
+      <motion.div className="fixed inset-0 z-0 pointer-events-none opacity-60"
         animate={{
           background: [
             "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,255,255,0.6), transparent 50%), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(255,255,255,0.4), transparent 50%)",
@@ -129,37 +105,22 @@ export function LinkBioPage({ onCatalog }: LinkBioPageProps) {
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="fixed z-0 pointer-events-none"
-        style={{
-          width: "200%",
-          height: "100px",
-          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
-          transform: "rotate(-35deg)",
-          top: "20%",
-          left: "-50%",
-        }}
+      <motion.div className="fixed z-0 pointer-events-none"
+        style={{ width: "200%", height: "100px", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)", transform: "rotate(-35deg)", top: "20%", left: "-50%" }}
         animate={{ left: ["-50%", "100%"] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", repeatDelay: 4 }}
       />
-      <div
-        className="pointer-events-none fixed inset-0 z-[1]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          opacity: 0.025,
-        }}
+      <div className="pointer-events-none fixed inset-0 z-[1]"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, opacity: 0.025 }}
       />
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
+      <motion.div initial="hidden" animate="visible" variants={containerVariants}
         className="relative z-10 mx-auto max-w-[400px] w-full flex flex-col flex-1 justify-between"
       >
         <motion.div variants={itemVariants} className="pt-2">
           <ProfileSection
             name="Цифровая Аптечка"
-            bio="Ваш надёжный помощник в мире здоровья — лекарства, консультации и доставка на дом"
+            bio="Квантовые SSF-технологии для здоровья — без химии, без побочных эффектов"
             imageUrl="https://cdn.poehali.dev/projects/c51795e0-ad32-46ca-aef5-a4f2158f25f3/files/2d4d71b6-9aea-4588-a590-470db02090a5.jpg"
           />
         </motion.div>
