@@ -6,14 +6,16 @@ interface LinkCardProps {
   description?: string
   href: string
   icon: LucideIcon
+  onClick?: () => void
 }
 
-export function LinkCard({ title, description, href, icon: Icon }: LinkCardProps) {
+export function LinkCard({ title, description, href, icon: Icon, onClick }: LinkCardProps) {
   return (
     <motion.a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={onClick ? undefined : "_blank"}
+      rel={onClick ? undefined : "noopener noreferrer"}
+      onClick={onClick ? (e) => { e.preventDefault(); onClick() } : undefined}
       className="group relative flex w-full items-center gap-4 rounded-[20px] px-4 py-4 overflow-hidden"
       style={{
         background: "rgba(255, 255, 255, 0.45)",

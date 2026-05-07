@@ -2,41 +2,11 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "@/components/ProfileSection"
 import { LinkCard } from "@/components/LinkCard"
 import { SocialFooter } from "@/components/SocialFooter"
-import Icon from "@/components/ui/icon"
-import { Globe, Send, Phone, Truck, Newspaper, MessageCircle, Mail } from "lucide-react"
+import { Send, Phone, Truck, Newspaper, MessageCircle, Mail, LayoutGrid } from "lucide-react"
 
-const links = [
-  {
-    title: "Каталог препаратов",
-    description: "Лекарства, БАДы, медизделия",
-    href: "https://www.e-pharmakit.ru",
-    icon: Globe,
-  },
-  {
-    title: "Онлайн-консультация",
-    description: "Ответим на вопросы о препаратах",
-    href: "#",
-    icon: Phone,
-  },
-  {
-    title: "Доставка лекарств",
-    description: "Быстрая доставка на дом",
-    href: "#",
-    icon: Truck,
-  },
-  {
-    title: "Telegram-канал",
-    description: "Новости здоровья и акции",
-    href: "#",
-    icon: Send,
-  },
-  {
-    title: "Полезные статьи",
-    description: "Советы по здоровью и лечению",
-    href: "#",
-    icon: Newspaper,
-  },
-]
+interface LinkBioPageProps {
+  onCatalog: () => void
+}
 
 const socials = [
   { icon: Send, href: "#", label: "Telegram" },
@@ -56,27 +26,53 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 350,
-      damping: 25,
-    },
+    transition: { type: "spring", stiffness: 350, damping: 25 },
   },
 }
 
-export function LinkBioPage() {
+export function LinkBioPage({ onCatalog }: LinkBioPageProps) {
+  const links = [
+    {
+      title: "Каталог препаратов",
+      description: "Лекарства, БАДы, медизделия",
+      href: "#",
+      icon: LayoutGrid,
+      onClick: onCatalog,
+    },
+    {
+      title: "Онлайн-консультация",
+      description: "Ответим на вопросы о препаратах",
+      href: "#",
+      icon: Phone,
+    },
+    {
+      title: "Доставка лекарств",
+      description: "Быстрая доставка на дом",
+      href: "#",
+      icon: Truck,
+    },
+    {
+      title: "Telegram-канал",
+      description: "Новости здоровья и акции",
+      href: "#",
+      icon: Send,
+    },
+    {
+      title: "Полезные статьи",
+      description: "Советы по здоровью и лечению",
+      href: "#",
+      icon: Newspaper,
+    },
+  ]
+
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
       <div className="fixed inset-0 z-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
 
-      {/* Animated gradient orbs — медицинская палитра */}
       <motion.div
         className="fixed z-0 w-[500px] h-[500px] rounded-full"
         style={{
@@ -85,18 +81,9 @@ export function LinkBioPage() {
           top: "-10%",
           left: "-10%",
         }}
-        animate={{
-          x: [0, 100, 50, 0],
-          y: [0, 50, 100, 0],
-          scale: [1, 1.2, 0.9, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ x: [0, 100, 50, 0], y: [0, 50, 100, 0], scale: [1, 1.2, 0.9, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <motion.div
         className="fixed z-0 w-[600px] h-[600px] rounded-full"
         style={{
@@ -105,18 +92,9 @@ export function LinkBioPage() {
           top: "30%",
           right: "-20%",
         }}
-        animate={{
-          x: [0, -80, -40, 0],
-          y: [0, 80, -40, 0],
-          scale: [1, 0.85, 1.15, 1],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ x: [0, -80, -40, 0], y: [0, 80, -40, 0], scale: [1, 0.85, 1.15, 1] }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <motion.div
         className="fixed z-0 w-[450px] h-[450px] rounded-full"
         style={{
@@ -125,18 +103,9 @@ export function LinkBioPage() {
           bottom: "-5%",
           left: "20%",
         }}
-        animate={{
-          x: [0, 60, -30, 0],
-          y: [0, -60, 30, 0],
-          scale: [1, 1.1, 0.95, 1],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ x: [0, 60, -30, 0], y: [0, -60, 30, 0], scale: [1, 1.1, 0.95, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <motion.div
         className="fixed z-0 w-[350px] h-[350px] rounded-full"
         style={{
@@ -145,18 +114,9 @@ export function LinkBioPage() {
           top: "60%",
           left: "-5%",
         }}
-        animate={{
-          x: [0, 40, 80, 0],
-          y: [0, -40, 20, 0],
-          scale: [1, 1.2, 1, 1],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ x: [0, 40, 80, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 1, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <motion.div
         className="fixed inset-0 z-0 pointer-events-none opacity-60"
         animate={{
@@ -167,13 +127,8 @@ export function LinkBioPage() {
             "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,255,255,0.6), transparent 50%), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(255,255,255,0.4), transparent 50%)",
           ],
         }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <motion.div
         className="fixed z-0 pointer-events-none"
         style={{
@@ -184,17 +139,9 @@ export function LinkBioPage() {
           top: "20%",
           left: "-50%",
         }}
-        animate={{
-          left: ["-50%", "100%"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          repeatDelay: 4,
-        }}
+        animate={{ left: ["-50%", "100%"] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", repeatDelay: 4 }}
       />
-
       <div
         className="pointer-events-none fixed inset-0 z-[1]"
         style={{
