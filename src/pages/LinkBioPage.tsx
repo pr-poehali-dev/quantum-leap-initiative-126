@@ -2,38 +2,39 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "@/components/ProfileSection"
 import { LinkCard } from "@/components/LinkCard"
 import { SocialFooter } from "@/components/SocialFooter"
-import { Globe, Youtube, Mail, ShoppingBag, FileText, MessageCircle, Send } from "lucide-react"
+import Icon from "@/components/ui/icon"
+import { Globe, Send, Phone, Truck, Newspaper, MessageCircle, Mail } from "lucide-react"
 
 const links = [
   {
-    title: "Мой сайт",
-    description: "Портфолио и услуги",
-    href: "#",
+    title: "Каталог препаратов",
+    description: "Лекарства, БАДы, медизделия",
+    href: "https://www.e-pharmakit.ru",
     icon: Globe,
   },
   {
-    title: "YouTube канал",
-    description: "Видео и туториалы",
+    title: "Онлайн-консультация",
+    description: "Ответим на вопросы о препаратах",
     href: "#",
-    icon: Youtube,
+    icon: Phone,
   },
   {
-    title: "Магазин",
-    description: "Товары и услуги",
+    title: "Доставка лекарств",
+    description: "Быстрая доставка на дом",
     href: "#",
-    icon: ShoppingBag,
+    icon: Truck,
   },
   {
-    title: "Telegram",
-    description: "Написать напрямую",
+    title: "Telegram-канал",
+    description: "Новости здоровья и акции",
     href: "#",
     icon: Send,
   },
   {
-    title: "Бесплатные материалы",
-    description: "Шаблоны и гайды",
+    title: "Полезные статьи",
+    description: "Советы по здоровью и лечению",
     href: "#",
-    icon: FileText,
+    icon: Newspaper,
   },
 ]
 
@@ -73,13 +74,13 @@ const itemVariants = {
 export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
-      <div className="fixed inset-0 z-0 bg-gradient-to-br from-slate-50 via-white to-slate-100" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
 
-      {/* Animated gradient orbs */}
+      {/* Animated gradient orbs — медицинская палитра */}
       <motion.div
         className="fixed z-0 w-[500px] h-[500px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(147, 51, 234, 0.25) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%)",
           filter: "blur(60px)",
           top: "-10%",
           left: "-10%",
@@ -99,7 +100,7 @@ export function LinkBioPage() {
       <motion.div
         className="fixed z-0 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, transparent 70%)",
           filter: "blur(80px)",
           top: "30%",
           right: "-20%",
@@ -119,7 +120,7 @@ export function LinkBioPage() {
       <motion.div
         className="fixed z-0 w-[450px] h-[450px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%)",
           filter: "blur(70px)",
           bottom: "-5%",
           left: "20%",
@@ -139,7 +140,7 @@ export function LinkBioPage() {
       <motion.div
         className="fixed z-0 w-[350px] h-[350px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, transparent 70%)",
           filter: "blur(50px)",
           top: "60%",
           left: "-5%",
@@ -194,7 +195,6 @@ export function LinkBioPage() {
         }}
       />
 
-      {/* Noise texture overlay */}
       <div
         className="pointer-events-none fixed inset-0 z-[1]"
         style={{
@@ -211,9 +211,9 @@ export function LinkBioPage() {
       >
         <motion.div variants={itemVariants} className="pt-2">
           <ProfileSection
-            name="GlassLinks"
-            bio="Креативный дизайнер и разработчик"
-            imageUrl="/images/544291433-18043960274659947-5766591717842883293-n.jpg"
+            name="Цифровая Аптечка"
+            bio="Ваш надёжный помощник в мире здоровья — лекарства, консультации и доставка на дом"
+            imageUrl="https://cdn.poehali.dev/projects/c51795e0-ad32-46ca-aef5-a4f2158f25f3/files/2d4d71b6-9aea-4588-a590-470db02090a5.jpg"
           />
         </motion.div>
 
@@ -226,7 +226,7 @@ export function LinkBioPage() {
         </motion.div>
 
         <motion.div variants={itemVariants} className="pb-2">
-          <SocialFooter socials={socials} copyright="2025 GlassLinks" />
+          <SocialFooter socials={socials} copyright="2026 Цифровая Аптечка" />
         </motion.div>
       </motion.div>
     </main>
