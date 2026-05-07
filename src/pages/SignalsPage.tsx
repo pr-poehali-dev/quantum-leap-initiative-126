@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Icon from "@/components/ui/icon"
+import { SubscribeModal } from "@/components/SubscribeModal"
 
 const signals = [
   {
@@ -221,6 +222,7 @@ interface SignalsPageProps {
 export function SignalsPage({ onBack }: SignalsPageProps) {
   const [activeCategory, setActiveCategory] = useState("all")
   const [search, setSearch] = useState("")
+  const [selectedSignal, setSelectedSignal] = useState<typeof signals[0] | null>(null)
 
   const filtered = signals.filter((s) => {
     const matchCat = activeCategory === "all" || s.category === activeCategory
@@ -337,14 +339,16 @@ export function SignalsPage({ onBack }: SignalsPageProps) {
                 </div>
               )}
 
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+              <motion.button
+                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+                onClick={() => setSelectedSignal(signal)}
                 className="w-full py-2 rounded-xl text-[12px] font-semibold"
                 style={signal.isFree
                   ? { background: "linear-gradient(135deg,#10b981,#14b8a6)", color: "white", boxShadow: "0 2px 8px rgba(16,185,129,0.3)" }
-                  : { background: "rgba(139,92,246,0.1)", color: "#7c3aed", border: "1px solid rgba(139,92,246,0.2)" }
+                  : { background: "linear-gradient(135deg,rgba(139,92,246,0.15),rgba(124,58,237,0.1))", color: "#7c3aed", border: "1px solid rgba(139,92,246,0.3)", boxShadow: "0 2px 8px rgba(139,92,246,0.12)" }
                 }
               >
-                {signal.isFree ? "Получить бесплатно" : "Подключить в подписке"}
+                {signal.isFree ? "Получить бесплатно" : "Оформить подписку →"}
               </motion.button>
             </motion.div>
           ))}
@@ -360,6 +364,11 @@ export function SignalsPage({ onBack }: SignalsPageProps) {
         )}
 
       </div>
+
+      <SubscribeModal
+        signal={selectedSignal}
+        onClose={() => setSelectedSignal(null)}
+      />
     </main>
   )
 }
